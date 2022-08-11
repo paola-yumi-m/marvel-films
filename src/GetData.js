@@ -1,16 +1,26 @@
 import React from "react";
 import { Card } from "./Card";
 
-export const GetData = ({ data }) => {
+export const GetData = ({ data, id }) => {
+    function isIdValid(increment) {
+        if (id + increment <= data.length) {
+            return true;
+        }
+        return false;
+    }
+
+    function createSubsequentCards() {
+        let cards = [];
+        for (let increment = 0; increment < 6; increment++) {
+            isIdValid(increment) ? cards.push(<Card data={data} id={id+increment}/>) : cards.push(<div></div>);
+        }
+        return cards;
+    }
+
     return (
         <div className='body'>
             <div className='card-container'>
-                <Card data={data} id={0}/>
-                <Card data={data} id={1}/>
-                <Card data={data} id={2}/>
-                <Card data={data} id={3}/>
-                <Card data={data} id={4}/>
-                <Card data={data} id={5}/>
+                {createSubsequentCards()}
             </div>
         </div>
     );
