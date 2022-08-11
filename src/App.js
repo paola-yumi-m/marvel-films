@@ -10,35 +10,35 @@ export const App = () => {
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(true);
     const [ firstId, setFirstId ] = useState(1);
-    const numFilms = 20 //39;
-    let numPages = Math.round(data.length / 6) + 1;
+    const numFilms = 21 //39;
+    let numPages = Math.round(data.length / 6);
 
     useEffect(() => {
-        // const getData = async () => {
-        //     for (let id = 1; id <= numFilms; id++) {
-        //         try {
-        //             let url = `https://mcuapi.herokuapp.com/api/v1/movies/${id}`;
-        //             const response = await fetch(url);
-        //             if (!response.ok) {
-        //                 throw new Error(
-        //                     `HTTP Error: ${response.status}`
-        //                 )
-        //             }
-        //             let actualData = await response.json();
-        //             setData(data => [...data, actualData]);
-        //             setError(null);
-        //         } catch (error) {
-        //             setError(error);
-        //             setData([]);
-        //         }
-        //     }
-        //     setLoading(false);
-        // }
-        const getData = () => {
-            setData(data_2);
-            setError(null);
+        const getData = async () => {
+            for (let id = 1; id <= numFilms; id++) {
+                try {
+                    let url = `https://mcuapi.herokuapp.com/api/v1/movies/${id}`;
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(
+                            `HTTP Error: ${response.status}`
+                        )
+                    }
+                    let actualData = await response.json();
+                    setData(data => [...data, actualData]);
+                    setError(null);
+                } catch (error) {
+                    setError(error);
+                    setData([]);
+                }
+            }
             setLoading(false);
         }
+        // const getData = () => {
+        //     setData(data_2);
+        //     setError(null);
+        //     setLoading(false);
+        // }
         getData();
     }, []);
 

@@ -13,7 +13,6 @@ export const Card = ({ data, id }) => {
             <div className='infos'>
                 <h2>{data[dataId]['title']}</h2>
                 <p>{getReleaseDate()}</p>
-                <p>{id}</p>
             </div>
         </div>
 )

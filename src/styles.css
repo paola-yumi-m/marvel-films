@@ -43,10 +43,19 @@ img {
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     color: white;
     width: 100%;
     padding: 50px 20px 10px 20px;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .card {
@@ -55,10 +64,10 @@ img {
     background-color: white;
     color: black;
     display: flex;
-    margin: 10px;
     border-radius: 3%;
     cursor: pointer;
-    margin: 20px 0;
+    margin: 20px 10px;
+    animation: fadeIn 2s;
 }
 
 .card:hover {
