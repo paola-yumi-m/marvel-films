@@ -1,18 +1,19 @@
 import React from "react";
 
-export const Card = ({ data, id }) => {
+export const Card = ({ data, id, getReleaseDate, currentCard }) => {
     const dataId = id - 1;
 
-    const getReleaseDate = () => {
-        return data[dataId]['release_date'].slice(0, 4);
+    function handleClick(e) {
+        const id = e.currentTarget.id;
+        currentCard(id);
     }
 
     return (
-        <div key={id} className='card'>
+        <div id={id} className='card' onClick={handleClick}>
             <img src={data[dataId]['cover_url']}/>
             <div className='infos'>
                 <h2>{data[dataId]['title']}</h2>
-                <p>{getReleaseDate()}</p>
+                <p>{getReleaseDate(dataId)}</p>
             </div>
         </div>
 )

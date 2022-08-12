@@ -7,7 +7,10 @@ body {
 
 header {
     height: 100px;
+    width: 100%;
     background-color: white;
+    position: fixed;
+    z-index: 1;
 }
 
 img {
@@ -19,6 +22,11 @@ img {
 .body {
     display: flex;
     justify-content: center;
+}
+
+.content {
+    position: absolute;
+    top: 100px;
 }
 
 .logo-div {
@@ -47,6 +55,7 @@ img {
     color: white;
     width: 100%;
     padding: 50px 20px 10px 20px;
+    position: relative;
 }
 
 @keyframes fadeIn {
@@ -110,6 +119,7 @@ img {
     padding: 10px 70px;
     margin-bottom: 20px;
     color: red;
+    position: relative;
 }
 
 .pagination h1 {
@@ -135,9 +145,6 @@ img {
     background-color: white;
 }
 
-.pages {
-}
-
 .pages ul {
     display: flex;
     text-align: center;
@@ -161,4 +168,104 @@ img {
 
 .pages li:hover {
     transform: scale(1.2);
+}
+
+.detail-card {
+    position: fixed;
+    top: 20%;
+    left: 15%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 1;
+    cursor: auto;
+    border-style: dashed;
+    border-color: red;
+}
+
+.detail-card:hover {
+    transform: none;
+}
+
+.detail-card-infos {
+    display: flex;
+    align-items: flex-start;
+    font-family: 'Patrick Hand', cursive;
+}
+
+.detail-card-infos p, ul {
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.overview .trailer {
+    padding-top: 10px;
+}
+
+.overview a {
+    text-decoration: underline;
+    font-weight: bold;
+    color: gray;
+    margin: 10px;
+}
+
+.overview a:hover {
+    color: red;
+}
+
+.detail-card-infos p {
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.detail-card-infos ul {
+    padding: 0 10px;
+    margin: 0 10px;
+}
+
+.detail-card-infos li {
+    list-style-type: none;
+}
+
+.detail-card-infos span {
+    font-weight: bold;
+    color: red;
+}
+
+.overview {
+    width: 400px;
+    margin-left: 20px;
+}
+
+.exit-button {
+    position: relative;
+    background-color: white;
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 14px;
+}
+
+.exit-button:hover {
+    background-color: red;
+    color: white;
+}
+
+.faded-bg {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
 }
