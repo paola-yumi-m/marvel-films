@@ -9,68 +9,54 @@ import ToggleButton from 'react-toggle-button';
 
 export const App = () => {
     const [ data, setData ] = useState([]);
-    const [ chronologicalData, setChronologicalData ] = useState([]);
     const [ error, setError ] = useState(null);
     const [ loading, setLoading ] = useState(true);
     const [ firstId, setFirstId ] = useState(1);
     const [ cardId, setCardId ] = useState(null);
     const [ showCard, setShowCard ] = useState(false);
     const [ isChronological, setIsChronological ] = useState(false);
-    const numFilms = 21 //39;
+    const numFilms = 39 //39;
     let numPages = Math.round(data.length / 6);
 
     useEffect(() => {
-        // const getData = async () => {
-        //     for (let id = 1; id <= numFilms; id++) {
-        //         try {
-        //             let url = `https://mcuapi.herokuapp.com/api/v1/movies/${id}`;
-        //             const response = await fetch(url);
-        //             if (!response.ok) {
-        //                 throw new Error(
-        //                     `HTTP Error: ${response.status}`
-        //                 )
-        //             }
-        //             let actualData = await response.json();
-        //             setData(data => [...data, actualData]);
-        //             setChronologicalData(data);
-        //             setError(null);
-        //         } catch (error) {
-        //             setError(error);
-        //             setData([]);
-        //         }
-        //     }
-        //     setLoading(false);
-        //     originalData = data;
-        // }
-        const getData = () => {
-            setData(data_2);
-            setChronologicalData(data_2);
-            setError(null);
+        const getData = async () => {
+            for (let id = 1; id <= numFilms; id++) {
+                try {
+                    let url = `https://mcuapi.herokuapp.com/api/v1/movies/${id}`;
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(
+                            `HTTP Error: ${response.status}`
+                        )
+                    }
+                    let actualData = await response.json();
+                    setData(data => [...data, actualData]);
+                    setError(null);
+                } catch (error) {
+                    setError(error);
+                    setData([]);
+                }
+            }
             setLoading(false);
         }
-        getData();
-
-        // const orderData = () => {
-        //     setChronologicalData((prevState) => {
-        //         prevState.sort(function(a, b) {
-        //             let keyA = a.chronology,
-        //                 keyB = b.chronology;
-        //             if (keyA < keyB) return -1;
-        //             if (keyA > keyB) return 1;
-        //             return 0;
-        //         });
-        //     });
-        //
-        //     chronologicalData.forEach((movie, id) => movie.id = id + 1);
-        //
+        // const getData = () => {
+        //     setData(data_2);
+        //     setError(null);
+        //     setLoading(false);
+        //     setOriginalData(data_2);
         // }
-        //
-        // orderData();
-
+        getData();
     }, []);
 
-    console.log(data);
-    console.log(chronologicalData);
+    const orderData = (dataToOrder, idVariable) => {
+        setData(() => dataToOrder.sort(function(a, b) {
+                let keyA = a[idVariable],
+                    keyB = b[idVariable];
+                if (keyA < keyB) return -1;
+                if (keyA > keyB) return 1;
+                return 0;
+            })
+        )};
 
     const directToPage = (id) => {
         setFirstId(() => id);
@@ -85,11 +71,13 @@ export const App = () => {
         return data[id]['release_date'].slice(0, 4);
     }
 
-    const makeCronological = () => {
+    const makeChronological = () => {
         if (isChronological) {
             setIsChronological(false);
+            orderData(data, 'id');
         } else {
             setIsChronological(true);
+            orderData(data, 'chronology')
         }
     }
 
@@ -99,8 +87,14 @@ export const App = () => {
                 <div className='logo-div'>
                     <img src={logo} alt='marvel logo'/>
                     <p className='logo-name'>movies</p>
+                </div>
+                <div className='toggle-button'>
+                    <p className='chronological'>Chronological Order</p>
                     <ToggleButton value={ isChronological || false }
-                                  onToggle={makeCronological}/>
+                                  onToggle={makeChronological}
+                                  inactiveLabel={''}
+                                  activeLabel={''}
+                                  />
                 </div>
             </header>
             <div>

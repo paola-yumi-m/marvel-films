@@ -11,6 +11,9 @@ header {
     background-color: white;
     position: fixed;
     z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 img {
@@ -41,10 +44,18 @@ img {
     margin: 15px 0;
 }
 
+.toggle-button {
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+    font-size: 20px;
+}
+
 .loading {
     font-family: 'Bangers', cursive;
     font-size: 45px;
-    padding: 20px;
+    padding: 120px 20px;
     color: white;
 }
 
