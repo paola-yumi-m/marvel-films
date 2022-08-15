@@ -25,6 +25,7 @@ img {
 .body {
     display: flex;
     justify-content: center;
+    animation: fadeIn 2s;
 }
 
 .content {
@@ -59,16 +60,6 @@ img {
     color: white;
 }
 
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    color: white;
-    width: 100%;
-    padding: 50px 20px 10px 20px;
-    position: relative;
-}
-
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -77,6 +68,17 @@ img {
         opacity: 1;
     }
 }
+
+.card-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+color: white;
+width: 100%;
+padding: 50px 20px 10px 20px;
+position: relative;
+}
+
 
 .card {
     text-align: center;
@@ -87,7 +89,6 @@ img {
     border-radius: 3%;
     cursor: pointer;
     margin: 20px 10px;
-    animation: fadeIn 2s;
 }
 
 .card:hover {
@@ -195,6 +196,7 @@ img {
     cursor: auto;
     border-style: dashed;
     border-color: red;
+    animation: fadeIn 2s;
 }
 
 .detail-card:hover {

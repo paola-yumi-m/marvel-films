@@ -77,8 +77,9 @@ export const App = () => {
             orderData(data, 'id');
         } else {
             setIsChronological(true);
-            orderData(data, 'chronology')
+            orderData(data, 'chronology');
         }
+        setFirstId(1);
     }
 
     return (
