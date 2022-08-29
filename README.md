@@ -1,6 +1,6 @@
 # Marvel Movies Project
 
-This a React project that lists all Marvel movies until present, getting the data from the [Marvel API](https://mcuapi.herokuapp.com/api/v1/movies).
+This is a React project that lists all Marvel movies until present, getting the data from the [Marvel API](https://mcuapi.herokuapp.com/api/v1/movies).
 
 # Features:
 This project implements the following features:
