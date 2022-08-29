@@ -11,12 +11,12 @@ This project implements the following features:
 
 # Some preview images of the final project
 
-![Overview]()
+![Overview](./preview/overview.png)
 
-![Card]()
+![Card](./preview/card.png)
 
-![Pagination]()
+![Pagination](./preview/pagination.png)
 
-![Chronological Order]()
+![Chronological Order](./preview/chronological-order.png)
 
 **[Video preview](https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6964927593171046400)**
