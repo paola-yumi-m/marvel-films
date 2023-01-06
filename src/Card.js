@@ -13,7 +13,7 @@ export const Card = ({ data, id, getReleaseDate, currentCard }) => {
             <img src={data[dataId]['cover_url']}/>
             <div className='infos'>
                 <h2>{data[dataId]['title']}</h2>
-                <p>{getReleaseDate(dataId)}</p>
+                <p>{getReleaseDate(data, dataId)}</p>
             </div>
         </div>
 )

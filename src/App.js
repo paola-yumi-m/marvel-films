@@ -4,7 +4,7 @@ import './styles.css';
 import { GetData } from "./GetData";
 import { Pagination } from "./Pagination";
 import { data_2 } from "./json";
-import { DetailCard } from "./DetailCard";
+import { DetailCard } from "./DetailCard/DetailCard";
 import ToggleButton from 'react-toggle-button';
 
 export const App = () => {
@@ -17,6 +17,7 @@ export const App = () => {
     const [ isChronological, setIsChronological ] = useState(false);
     const numFilms = 39 //39;
     let numPages = Math.round(data.length / 6);
+    const { getReleaseDate } = require('./utils/getReleaseDate');
 
     useEffect(() => {
         const getData = async () => {
@@ -67,9 +68,6 @@ export const App = () => {
         setShowCard(true);
     }
 
-    const getReleaseDate = (id) => {
-        return data[id]['release_date'].slice(0, 4);
-    }
 
     const makeChronological = () => {
         if (isChronological) {

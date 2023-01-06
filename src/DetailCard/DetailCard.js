@@ -25,7 +25,7 @@ export const DetailCard = ({ cardId, getReleaseDate, data, setShowCard }) => {
                 <h2>{data[dataId]['title']}</h2>
                 <div className='detail-card-infos'>
                     <div>
-                        <p><span>Year:</span> {getReleaseDate(dataId)}</p>
+                        <p><span>Year:</span> {getReleaseDate(data, dataId)}</p>
                         <p><span>Duration:</span> {data[dataId]['duration']} min</p>
                         <p><span>Saga:</span> {data[dataId]['saga']}</p>
                         <p><span>Box Office:</span> ${formatBoxOffice()}</p>
