@@ -4,7 +4,7 @@ export const DetailCard = ({ cardId, getReleaseDate, data, setShowCard }) => {
     const dataId = cardId - 1;
 
     function getRelatedMovies() {
-        return data[dataId]['related_movies'].map((movie) => <li>- {movie.title}</li>);
+        return data[dataId]['related_movies'].map((movie) => <li key={movie.id}>- {movie.title}</li>);
     }
 
     function formatBoxOffice() {
@@ -34,7 +34,7 @@ export const DetailCard = ({ cardId, getReleaseDate, data, setShowCard }) => {
                     </div>
                     <div className='overview'>
                         <p><span>Overview:</span></p>
-                        <p>{data[dataId]['overview']}</p>
+                        <p data-testid='overview'>{data[dataId]['overview']}</p>
                         <div className='trailer'>
                             <a href={data[dataId]['trailer_url']} target='_blank' >Watch trailer</a>
                         </div>
