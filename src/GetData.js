@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "./Card";
+import { Card } from "./Card/Card";
 
 export const GetData = ({ data, id, getReleaseDate, currentCard }) => {
     function isIdValid(increment) {

@@ -9,7 +9,7 @@ export const Card = ({ data, id, getReleaseDate, currentCard }) => {
     }
 
     return (
-        <div id={id} className='card' onClick={handleClick}>
+        <div id={id} className='card' onClick={handleClick} data-testid='card'>
             <img src={data[dataId]['cover_url']}/>
             <div className='infos'>
                 <h2>{data[dataId]['title']}</h2>
