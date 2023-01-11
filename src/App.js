@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import logo from './img/Marvel_Logo.svg';
 import './styles.css';
-import { GetData } from "./GetData";
+import { GetData } from "./GetData/GetData";
 import { Pagination } from "./Pagination";
 import { data_2 } from "./json";
 import { DetailCard } from "./DetailCard/DetailCard";
