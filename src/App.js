@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import logo from './img/Marvel_Logo.svg';
 import './styles.css';
 import { GetData } from "./GetData/GetData";
-import { Pagination } from "./Pagination";
+import { Pagination } from "./Pagination/Pagination";
 import { data_2 } from "./json";
 import { DetailCard } from "./DetailCard/DetailCard";
 import ToggleButton from 'react-toggle-button';
@@ -80,6 +80,14 @@ export const App = () => {
         setFirstId(1);
     }
 
+    const nextPage = (id) => {
+        setFirstId(() => id + 6);
+    }
+
+    const previousPage = (id) => {
+        setFirstId(() => id - 6);
+    }
+
     return (
         <div>
             <header>
@@ -100,7 +108,7 @@ export const App = () => {
                 {loading ? <div className='loading'>Loading...</div> :
                     <div className='content'>
                         <GetData data={data} id={firstId} getReleaseDate={getReleaseDate} currentCard={currentCard} />
-                        <Pagination data={data} setFirstId={setFirstId} id={firstId} numPages={numPages} directToPage={directToPage} />
+                        <Pagination data={data} nextPage={nextPage} previousPage={previousPage} id={firstId} numPages={numPages} directToPage={directToPage} />
                         <div className={showCard ? 'faded-bg' : ''}>
                             {showCard && <DetailCard cardId={cardId} getReleaseDate={getReleaseDate} data={data} setShowCard={setShowCard} />}
                         </div>
