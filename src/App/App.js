@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from "react";
-import logo from './img/Marvel_Logo.svg';
-import './styles.css';
-import { GetData } from "./GetData/GetData";
-import { Pagination } from "./Pagination/Pagination";
-import { data_2 } from "./json";
-import { DetailCard } from "./DetailCard/DetailCard";
+import logo from '../img/Marvel_Logo.svg';
+import '../styles.css';
+import { GetData } from "../GetData/GetData";
+import { Pagination } from "../Pagination/Pagination";
+import { data_2 } from "../json";
+import { DetailCard } from "../DetailCard/DetailCard";
 import ToggleButton from 'react-toggle-button';
+import axios from "axios";
+
+let url = `https://mcuapi.herokuapp.com/api/v1/movies`;
 
 export const App = () => {
     const [ data, setData ] = useState([]);
@@ -15,37 +18,33 @@ export const App = () => {
     const [ cardId, setCardId ] = useState(null);
     const [ showCard, setShowCard ] = useState(false);
     const [ isChronological, setIsChronological ] = useState(false);
-    const numFilms = 39 //39;
+    const numFilms = 10 //39;
     let numPages = Math.round(data.length / 6);
-    const { getReleaseDate } = require('./utils/getReleaseDate');
+    const { getReleaseDate } = require('../utils/getReleaseDate');
 
-    useEffect(() => {
-        const getData = async () => {
-            for (let id = 1; id <= numFilms; id++) {
-                try {
-                    let url = `https://mcuapi.herokuapp.com/api/v1/movies/${id}`;
-                    const response = await fetch(url);
-                    if (!response.ok) {
-                        throw new Error(
-                            `HTTP Error: ${response.status}`
-                        )
-                    }
-                    let actualData = await response.json();
-                    setData(data => [...data, actualData]);
-                    setError(null);
-                } catch (error) {
-                    setError(error);
-                    setData([]);
-                }
+    async function getData() {
+        const films = [];
+        for (let id = 1; id <= numFilms; id++) {
+            try {
+                const response = await axios.get(`${url}/${id}`);
+                let actualData = response?.data;
+                films.push(actualData);
+                setError(null);
+            } catch (error) {
+                setError(error);
+                setData([]);
             }
-            setLoading(false);
         }
-        // const getData = () => {
+        setData(films);
+        setLoading(false);
+
         //     setData(data_2);
         //     setError(null);
         //     setLoading(false);
         //     setOriginalData(data_2);
-        // }
+    }
+
+    useEffect(() => {
         getData();
     }, []);
 
