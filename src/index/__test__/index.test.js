@@ -1,4 +1,4 @@
-import App from "../../App";
+import App from "../../App/App";
 import ReactDOM from "react-dom";
 
 jest.mock("react-dom", () => ({ render: jest.fn() }));
