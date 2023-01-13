@@ -18,7 +18,7 @@ export const App = () => {
     const [ cardId, setCardId ] = useState(null);
     const [ showCard, setShowCard ] = useState(false);
     const [ isChronological, setIsChronological ] = useState(false);
-    const numFilms = 1 //39;
+    const numFilms = 2 //39;
     let numPages = Math.round(data.length / 6);
     const { getReleaseDate } = require('../utils/getReleaseDate');
 
