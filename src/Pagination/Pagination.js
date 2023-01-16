@@ -9,7 +9,7 @@ export const Pagination = ({ data, nextPage, previousPage, id, numPages, directT
     function getPages() {
         let pageList = [];
         for (let page = 0; page < numPages; page++) {
-            pageList.push(<li key={page} id={page} onClick={handlePageClick}>{page+1}</li>)
+            pageList.push(<li key={page} id={page} data-testid='pages' onClick={handlePageClick}>{page+1}</li>)
         }
         return pageList;
     }

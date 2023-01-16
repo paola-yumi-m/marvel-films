@@ -10,7 +10,7 @@ export const GetData = ({ data, id, getReleaseDate, currentCard }) => {
     function createSubsequentCards() {
         let cards = [];
         for (let increment = 0; increment < 6; increment++) {
-            isIdValid(increment) ? cards.push(<Card key={increment} data-testid='card' data={data} id={id+increment} getReleaseDate={getReleaseDate} currentCard={currentCard} />) : cards.push(<div key={increment}></div>);
+            isIdValid(increment) ? cards.push(<Card key={increment} data={data} id={id+increment} getReleaseDate={getReleaseDate} currentCard={currentCard} />) : cards.push(<div key={increment}></div>);
         }
         return cards;
     }
